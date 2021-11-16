@@ -1,0 +1,64 @@
+.todo-item--container{
+    position: relative;
+    
+    display: flex;
+
+    margin: 0 auto;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    width: 100%;
+    height: auto;
+    min-height: 50px;
+    
+    list-style: none;
+    background-color: white;
+    align-items: center;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.list-item--check{
+    position: absolute;
+    left: 10px;
+    top: calc(50% - 10px);
+    height: 20px;
+    width: 20px;
+
+    background-image: url('../assets/checkmark.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.list-item--check:hover{
+    background-image: url('../assets/checkmark-green.svg');
+}
+
+.list-item--close{
+    position: absolute;
+    right: 10px;
+    top: -7px;
+    height: 15px;
+    width: 15px;
+
+    background-image: url('../assets/closeIcon.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.list-item--close:hover{
+    background-image: url('../assets/closeIcon-red.svg');
+    height: 20px;
+    width: 20px;
+    right: 5px;
+    top: -10px;
+}
+
+.todo-item--container p{
+    width: 75%;
+    height: auto;
+    margin: 10px auto;
+}
