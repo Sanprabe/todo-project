@@ -4,7 +4,7 @@ import './styles/CreateTodoButton.css';
 function CreateTodoButton(){
     return (
         <React.Fragment>
-            <button className="todo-button"></button>
+            <button className="todo-button" onClick={() => console.log('Clicked')}></button>
         </React.Fragment>
     );
 };
