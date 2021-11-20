@@ -10,23 +10,12 @@ function TodoItem(props){
         classTodoItem = "todo-item--container todo-item--completed"
         classItemCheck = "list-item--check todo-item--checkGreen"
     }
-
-    const onClickCompleted = () =>{
-        alert(`Ya completaste la tarea "${props.text}"`);
-
-    }
-
-    const onClickRemove = (msg) =>{
-        alert(`Seguro que quieres remover la tarea "${msg}"`);
-    }
-
     
-
     return (
         <li className={classTodoItem}>
-            <span className={classItemCheck} onClick={onClickCompleted}></span>
+            <span className={classItemCheck} onClick={props.onComplete}></span>
             <p>{props.text}</p>
-            <span className="list-item--close" onClick={() => onClickRemove(props.text)}></span>
+            <span className="list-item--close" onClick={props.onRemoved}></span>
         </li>
     );
 };
