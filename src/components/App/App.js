@@ -1,11 +1,6 @@
 import React from 'react';
-import { TodoCounter } from './components/TodoCounter';
-import { TodoSearch } from './components/TodoSearch';
-import { TodoList } from './components/TodoList';
-import { TodoItem } from './components/TodoItem';
-import { CreateTodoButton } from './components/CreateTodoButton';
+import { AppUI } from './AppUI';
 import './App.css';
-import react from 'react';
 
 
 function useLocalStorage(itemName, initialValue) {
@@ -13,7 +8,7 @@ function useLocalStorage(itemName, initialValue) {
   const [loading, setLoading] = React.useState(true);
   const [item, setItem] = React.useState(initialValue);
   
-  react.useEffect(() => {
+  React.useEffect(() => {
     setTimeout(() => {
       try {
         const localStorageItem = localStorage.getItem(itemName);
@@ -110,26 +105,18 @@ function App() {
   
   
   return (
-      <React.Fragment>
-        <TodoCounter completedTodos={completedTodos} countTodos={countTodos} />
-        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-        <TodoList>
-          {error && <p>Error</p>}
-          {loading && <p>Está cargando...</p>}
-          {(!loading && !searchedTodos.length && !error) && <p>Crea tu primer Todo</p>}
-
-          {searchedTodos.map(todos => (
-            <TodoItem 
-              key={todos.text}
-              text={todos.text}
-              completed={todos.completed}
-              onComplete={() => onComplete(todos.text)}
-              onRemoved={() => onRemoved(todos.text)}
-            />
-          ))}
-        </TodoList>
-        <CreateTodoButton />
-      </React.Fragment>
+    <AppUI
+      loading = {loading}
+      error = {error}
+      countTodos={countTodos}
+      completedTodos={completedTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      onComplete={onComplete}
+      onRemoved={onRemoved}
+    >
+    </AppUI>
   );
 }
 
