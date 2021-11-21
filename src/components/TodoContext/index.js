@@ -3,6 +3,7 @@ import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
 const TodoContext = React.createContext();
+
 function TodoProvider(props){
     
     let generalTodos = [
@@ -17,6 +18,7 @@ function TodoProvider(props){
     saveItem:saveTodos, 
     loading, error} = useLocalStorage("TodosV1", generalTodos);
     const [searchValue, setSearchValue] = React.useState("");
+    const [openModal, setOpenModal] = React.useState(false);
 
     // Code for Todo Counter
     const completedTodos = todos.filter(todos => !!todos.completed).length;
@@ -32,6 +34,10 @@ function TodoProvider(props){
         })
     }
 
+    // 
+
+    // Mark as completed
+
     const onComplete = (text) => {
         const indexItem = todos.findIndex((todo) => {
             return todo.text === text
@@ -44,6 +50,8 @@ function TodoProvider(props){
         }
         saveTodos(newTodo);
     }
+
+    // Remove from screen
 
     const onRemoved = (text) => {
         const indexItem = todos.findIndex((todo) => {
@@ -66,7 +74,9 @@ function TodoProvider(props){
                 setSearchValue,
                 searchedTodos,
                 onComplete,
-                onRemoved
+                onRemoved,
+                openModal,
+                setOpenModal
                 }
             }
         >

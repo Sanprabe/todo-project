@@ -1,0 +1,17 @@
+.modalBackground{
+    background-color: #555555;
+    opacity: 0.7;
+
+    position: fixed;
+    top: -10px;
+    bottom: -10px;
+    left: -10px;
+    right: -10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #FFFFFF;
+
+}
