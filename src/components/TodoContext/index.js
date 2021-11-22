@@ -6,17 +6,17 @@ const TodoContext = React.createContext();
 
 function TodoProvider(props){
     
-    let generalTodos = [
-      { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', completed: true},
-      { text: 'Pelas papas', completed: false},
-      { text: 'Hacer curso de platzi', completed: false},
-    ];
+    // let generalTodos = [
+    //   { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', completed: true},
+    //   { text: 'Pelas papas', completed: false},
+    //   { text: 'Hacer curso de platzi', completed: false},
+    // ];
     
     // Set state for items
     const {
     item: todos, 
     saveItem:saveTodos, 
-    loading, error} = useLocalStorage("TodosV1", generalTodos);
+    loading, error} = useLocalStorage("TodosV1", []);
     const [searchValue, setSearchValue] = React.useState("");
     const [openModal, setOpenModal] = React.useState(false);
 
@@ -61,6 +61,18 @@ function TodoProvider(props){
         newTodo.splice(indexItem, 1);
         saveTodos(newTodo);
     }
+    
+    // Add Todo
+    
+    const addTodo = (text) => {
+        let newTodo = [...todos];
+        newTodo.push({
+            "text": text,
+            "completed": false
+
+        });
+        saveTodos(newTodo);
+    }
 
     return (
         <TodoContext.Provider
@@ -75,6 +87,7 @@ function TodoProvider(props){
                 searchedTodos,
                 onComplete,
                 onRemoved,
+                addTodo,
                 openModal,
                 setOpenModal
                 }

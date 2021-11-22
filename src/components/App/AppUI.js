@@ -6,6 +6,7 @@ import { TodoItem } from '../TodoItem/TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton/CreateTodoButton';
 import { TodoContext } from '../TodoContext';
 import { Modal } from '../Modal/Modal';
+import { TodoForm } from '../TodoForm/TodoForm';
 import './App.css';
 
 function AppUI(){
@@ -32,7 +33,7 @@ function AppUI(){
     </TodoList>
 
     {!!openModal && <Modal>
-      <p>LOOOOOOOL</p>
+      <TodoForm />
     </Modal> }
 
     <CreateTodoButton />

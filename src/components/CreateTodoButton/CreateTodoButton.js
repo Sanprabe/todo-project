@@ -4,15 +4,11 @@ import './CreateTodoButton.css';
 
 function CreateTodoButton(){
 
-    const {openModal, setOpenModal} = React.useContext(TodoContext);
+    const { setOpenModal } = React.useContext(TodoContext);
 
     const onClick = () => {
-        if(!openModal){
-            setOpenModal(true);
-        }else{
-            setOpenModal(false);
+            setOpenModal(prevState => !prevState);
         }
-    }
 
     return (
         <React.Fragment>
